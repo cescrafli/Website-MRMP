@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Link untuk ikon keahlian teknis -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -18,36 +17,76 @@
             color: #cbd5e1; /* slate-300 */
         }
         .glassmorphism-card {
-            background: rgba(30, 41, 59, 0.5); /* slate-800 with opacity */
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #334155; /* slate-700 */
+        
+        /* Timeline Styles */
+        .timeline { position: relative; }
+        
+        /* Desktop: Garis di tengah */
+        @media (min-width: 768px) {
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #334155;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: 50%;
+                top: 1.5rem;
+                transform: translate(-50%, -50%);
+                width: 1rem;
+                height: 1rem;
+                border-radius: 9999px;
+                background-color: #22d3ee;
+                border: 3px solid #0f172a;
+                z-index: 10;
+            }
         }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 1.25rem; /* Sesuaikan dengan posisi vertikal yang diinginkan */
-            transform: translate(-50%, -50%);
-            width: 1rem;
-            height: 1rem;
-            border-radius: 9999px;
-            background-color: #22d3ee; /* cyan-400 */
-            border: 3px solid #0f172a; /* slate-900 */
+
+        /* Mobile: Garis di kiri */
+        @media (max-width: 767px) {
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #334155;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: 20px;
+                top: 1.5rem;
+                transform: translate(-50%, -50%);
+                width: 1rem;
+                height: 1rem;
+                border-radius: 9999px;
+                background-color: #22d3ee;
+                border: 3px solid #0f172a;
+                z-index: 10;
+            }
+            /* Memberi jarak konten dari garis timeline di mobile */
+            .timeline-content {
+                padding-left: 3rem; 
+            }
         }
-        /* Animasi untuk scroll */
+
+        /* Animasi Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .reveal.visible {
             opacity: 1;
@@ -55,364 +94,499 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300">
+<body class="bg-slate-900 text-slate-300 antialiased selection:bg-cyan-500 selection:text-white">
 
-    <!-- Header & Navigasi -->
-    <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800 shadow-md">
+    <header class="bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white tracking-wider">MRMP</a>
-            <div class="hidden md:flex space-x-8 items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-wider hover:text-cyan-400 transition-colors">MRMP<span class="text-cyan-400">.</span></a>
+            <div class="hidden md:flex space-x-8 items-center font-medium">
                 <a href="#about" class="hover:text-cyan-400 transition-colors duration-300">About Me</a>
                 <a href="#experience" class="hover:text-cyan-400 transition-colors duration-300">Experience</a>
                 <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300">Skills</a>
                 <a href="#projects" class="hover:text-cyan-400 transition-colors duration-300">Project</a>
-                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-2 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">Contact Me</a>
+                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-2 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 transform hover:-translate-y-0.5">Contact Me</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none p-2 hover:bg-slate-800 rounded-md transition-colors">
                 <i data-lucide="menu"></i>
             </button>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900">
-            <a href="#about" class="block py-3 px-6 hover:bg-slate-800 transition-colors">About Me</a>
-            <a href="#experience" class="block py-3 px-6 hover:bg-slate-800 transition-colors">Experience</a>
-            <a href="#skills" class="block py-3 px-6 hover:bg-slate-800 transition-colors">Skills</a>
-            <a href="#projects" class="block py-3 px-6 hover:bg-slate-800 transition-colors">Project</a>
-            <a href="#contact" class="block py-3 px-6 hover:bg-slate-800 transition-colors">Contact Me</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full left-0 shadow-xl">
+            <div class="flex flex-col py-2">
+                <a href="#about" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">About Me</a>
+                <a href="#experience" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#skills" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#projects" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Project</a>
+                <a href="#contact" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Contact Me</a>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-12 overflow-hidden">
 
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-center gap-12">
+        <section id="hero" class="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-center gap-12 pt-10 md:pt-0">
             <div class="md:w-3/5 text-center md:text-left reveal">
-                <p class="text-lg text-cyan-400 font-medium">Hello, I'm</p>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-2 leading-tight">Mochamad Rafli Mudji Prasetyo</h1>
+                <p class="text-lg text-cyan-400 font-medium mb-2">Hello, I'm</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Mochamad Rafli Mudji Prasetyo</h1>
                 <h2 class="text-2xl md:text-3xl font-semibold text-slate-300 mt-4">Recent Graduate in Information Systems</h2>
                 <p class="mt-6 max-w-xl mx-auto md:mx-0 text-slate-400 leading-relaxed">
-                    As a recent Information Systems graduate, I view data not just as numbers, but as the key to solving complex business puzzles. I have a deep enthuasiasm for the process of transforming raw data into actionable insights, using tools like PowerBI and Tableau to tell the story behind the numbers. My experience in data anlysis and technology consulting has solidified my belief that the best solutions are born from a thorough understanding of the problem. I am driven to continuously learn new techniques and technologies that can optimize processes and drive efficient innovation.
+                    As a recent Information Systems graduate, I view data not just as numbers, but as the key to solving complex business puzzles. I have a deep <strong>enthusiasm</strong> for the process of transforming raw data into actionable insights, using tools like PowerBI and Tableau to tell the story behind the numbers. My experience in data analysis and technology consulting has solidified my belief that the best solutions are born from a thorough understanding of the problem.
                 </p>
-                <div class="mt-10 flex justify-center md:justify-start space-x-4">
+                <div class="mt-10 flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="mailto:raflimudji@gmail.com" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30">
                         Contact Me
                     </a>
-                    <a href="#projects" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                        Look Project
+                    <a href="#projects" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-slate-600">
+                        View Projects
                     </a>
-                    <a href="cv/CV_MOCHAMAD_RAFLI_MUDJI_P.pdf" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    <a href="cv/CV_Mochamad_Rafli_Mudji_Prasetyo.pdf" download class="bg-transparent hover:bg-slate-800 text-cyan-400 border border-cyan-400 font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105">
                         Download CV
                     </a>
                 </div>
             </div>
-            <div class="md:w-2/5 flex justify-center reveal">
-                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-slate-800 border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/10 flex items-center justify-center overflow-hidden">
-                    <img src="Images/FotoProfile.jpg" alt="Foto Profil Mochamad Rafli" class="w-full h-full object-cover">
+            <div class="md:w-2/5 flex justify-center reveal delay-200">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-slate-800 border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 flex items-center justify-center overflow-hidden relative group">
+                    <img src="Images/FotoProfile.jpg" alt="Foto Profil Mochamad Rafli" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="py-24 reveal">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">About Me</h2>
                 <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
             </div>
-            <div class="max-w-3xl mx-auto text-center glassmorphism-card p-8 rounded-xl">
+            <div class="max-w-3xl mx-auto text-center glassmorphism-card p-8 md:p-12 rounded-2xl hover:border-cyan-400/30 transition-colors">
                 <p class="text-lg leading-relaxed text-slate-300">
-                A recent information Systems graduate from Bina Nusantara University with a strong foundation in data analysis and technology consulting. Proficient in data cleaning, analysis, and business intellegence, with the abilty to transform complex data into actionable insights. Skilled in process optimization and problem-solving. Passionate about leveraging analytical skills, efective communication, and technology-driven solutions to drive innovation and efficiency.
+                    A recent Information Systems graduate from Bina Nusantara University with a strong foundation in data analysis and technology consulting. Proficient in data cleaning, analysis, and <strong>Business Intelligence</strong>, with the ability to transform complex data into actionable insights. Skilled in process optimization and problem-solving. Passionate about leveraging analytical skills, <strong>effective</strong> communication, and technology-driven solutions to drive innovation and efficiency.
+                </p>
             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience" class="py-24 reveal">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Professional & Organizational Experience</h2>
                 <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
             </div>
             
-            <!-- Work Experience -->
-            <div class="mb-20">
-                <h3 class="text-2xl font-bold text-center text-cyan-400 mb-12">Work Experience</h3>
+            <div class="mb-24">
+                <h3 class="text-2xl font-bold text-center text-cyan-400 mb-12 flex items-center justify-center gap-2">
+                    <i data-lucide="briefcase" class="w-6 h-6"></i> Work Experience
+                </h3>
                 <div class="max-w-4xl mx-auto relative timeline">
-                    <!-- Timeline Items -->
+                    
                     <div class="space-y-12">
-                        <!-- Item 1 -->
-                        <div class="relative md:flex items-center">
-                            <div class="md:w-1/2 md:pr-8 md:text-right"></div>
-                            <div class="md:w-1/2 md:pl-8">
-                                <div class="glassmorphism-card p-6 rounded-lg hover:border-cyan-400/50 transition-all duration-300">
-                                    <p class="text-sm text-cyan-400 font-semibold">Jan 2024 - Present</p>
-                                    <h3 class="text-xl font-bold text-white mt-1">Freelance Tax Invoice</h3>
-                                    <p class="text-md text-slate-400">PT. CPA GLOBAL KREASI</p>
-                                    <p class="mt-2 text-sm">• Prepared and issued electronic tax invoices (coretax) in compliance with Indonesian VAT regulations.</p>
-                                    <p class="mt-2 text-sm">• Verified the accuracy of NPWP, VAT rates, and supporting documents before invoice issuance.</p>  
-                                    <p class="mt-2 text-sm">• Compiled monthly VAT reports and supported timely tax return submissions.</p>                               
-                                    <p class="mt-2 text-sm">• Coordinated with internal teams to ensure smooth tax documentation and reporting processes.</p>                               
-
-
+                        <div class="relative md:flex flex-row-reverse items-start group">
+                            <div class="md:w-1/2 md:pl-8 timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="flex flex-col md:items-end mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">Dec 2025 - Present</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white md:text-right">IT Intern</h3>
+                                    <p class="text-md text-slate-400 md:text-right font-medium">PT. Idea Vision Solusindo</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 md:text-right list-none">
+                                        <li>Developed a real-time web-based HRIS dashboard, enabling management to monitor workforce metrics.</li>
+                                        <li>Engineered a centralized reporting system using SharePoint and Power BI with automated refresh schedules.</li>
+                                        <li>Collaborated with HR teams to define data requirements and ensure seamless integration.</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
+                            <div class="md:w-1/2"></div> <div class="timeline-dot shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
                         </div>
-                        <!-- Item 2 -->
-                        <div class="relative md:flex flex-row-reverse items-center">
-                           <div class="md:w-1/2 md:pl-8 md:text-left"></div>
-                           <div class="md:w-1/2 md:pr-8">
-                                <div class="glassmorphism-card p-6 rounded-lg hover:border-cyan-400/50 transition-all duration-300 text-left md:text-right">
-                                    <p class="text-sm text-cyan-400 font-semibold">Nov 2024 - Present</p>
-                                    <h3 class="text-xl font-bold text-white mt-1">Freelance Tax Invoice</h3>
-                                    <p class="text-md text-slate-400">PT. Wujud Ragam Gemilang</p>
-                                    <p class="mt-2 text-sm">• Prepared and issued electronic tax invoices (coretax) in compliance with Indonesian VAT regulations.</p>
-                                    <p class="mt-2 text-sm">• Verified the accuracy of NPWP, VAT rates, and supporting documents before invoice issuance.</p>  
-                                    <p class="mt-2 text-sm">• Compiled monthly VAT reports and supported timely tax return submissions.</p>                               
-                                    <p class="mt-2 text-sm">• Coordinated with internal teams to ensure smooth tax documentation and reporting processes</p>                                  </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                         <!-- Item 3 -->
-                        <div class="relative md:flex items-center">
-                            <div class="md:w-1/2 md:pr-8 md:text-right"></div>
-                            <div class="md:w-1/2 md:pl-8">
-                                <div class="glassmorphism-card p-6 rounded-lg hover:border-cyan-400/50 transition-all duration-300">
-                                    <p class="text-sm text-cyan-400 font-semibold">March 2025</p>
-                                    <h3 class="text-xl font-bold text-white mt-1">Event Staff (VIV Asia 2025)</h3>
-                                    <p class="text-md text-slate-400">PT. Permata Wacana Lestari</p>
-                                    <p class="mt-2 text-sm">• Served as administrative staff and field interpreter during the international event VIV Asia 2025.</p>
-                                    <p class="mt-2 text-sm">• Facilitated communication between Indonesian delegates and international participants.</p>  
-                                    <p class="mt-2 text-sm">• Assisted with event documentation and supported technical coordination on-site.</p>                                 </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <!-- Item 4 -->
-                         <div class="relative md:flex flex-row-reverse items-center">
-                           <div class="md:w-1/2 md:pl-8 md:text-left"></div>
-                           <div class="md:w-1/2 md:pr-8">
-                                <div class="glassmorphism-card p-6 rounded-lg hover:border-cyan-400/50 transition-all duration-300 text-left md:text-right">
-                                    <p class="text-sm text-cyan-400 font-semibold">Sep 2023 - Feb 2024</p>
-                                    <h3 class="text-xl font-bold text-white mt-1">Business Intelligence Analyst Intern</h3>
-                                    <p class="text-md text-slate-400">PT. Xapiens Teknologi Indonesia</p>
-                                    <p class="mt-2 text-sm">• Assisted the ERP division in data cleaning and preparation, improving accuracy and efficiency.</p>
-                                    <p class="mt-2 text-sm">• Used statistical techniques and visualization tools to identify key trends in company data. </p>
-                                    <p class="mt-2 text-sm">• Developed predictive models that enhanced forecast accuracy.</p>  
-                                    <p class="mt-2 text-sm">• Supported ISO/IEC 27001 and ISO 9001 certified processes for data management.</p> 
+
+                        <div class="relative md:flex items-start group">
+                            <div class="md:w-1/2 md:pr-8 md:text-right timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="flex flex-col md:items-end mb-2 md:hidden">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">Jan 2024 - Present</span>
+                                    </div>
+                                    <div class="hidden md:flex justify-end mb-2">
+                                         <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">Jan 2024 - Present</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white">Freelance Tax Invoice</h3>
+                                    <p class="text-md text-slate-400 font-medium">PT. CPA GLOBAL KREASI</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 list-none">
+                                        <li>Prepared and issued electronic tax invoices (coretax) in compliance with regulations.</li>
+                                        <li>Verified the accuracy of NPWP, VAT rates, and supporting documents.</li>
+                                        <li>Compiled monthly VAT reports and supported timely tax return submissions.</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
+                            <div class="md:w-1/2"></div> <div class="timeline-dot"></div>
                         </div>
-                        <!-- Item 5 -->
 
-                        <div class="relative md:flex items-center">
-                            <div class="md:w-1/2 md:pr-8 md:text-right"></div>
-                            <div class="md:w-1/2 md:pl-8">
-                                <div class="glassmorphism-card p-6 rounded-lg hover:border-cyan-400/50 transition-all duration-300">
-                                    <p class="text-sm text-cyan-400 font-semibold">July 2022</p>
-                                    <h3 class="text-xl font-bold text-white mt-1">Event Staff (Indonesia Agriculture Competition 2022) </h3>
-                                    <p class="text-md text-slate-400">PT. Permata Wacana Lestari</p>
-                                    <p class="mt-2 text-sm">• Worked as administrative staff and interpreter for a national agricultural competition.</p>
-                                    <p class="mt-2 text-sm">• Managed participant data, documented event activities, and supported event operations.</p>  
-                                    <p class="mt-2 text-sm">• Ensured effective communication between participants and organizers from various regions.</p>                                 </div>
+                         <div class="relative md:flex flex-row-reverse items-start group">
+                            <div class="md:w-1/2 md:pl-8 timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="flex flex-col md:items-end mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">Nov 2024 - Present</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white md:text-right">Freelance Tax Invoice</h3>
+                                    <p class="text-md text-slate-400 md:text-right font-medium">PT. Wujud Ragam Gemilang</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 md:text-right list-none">
+                                        <li>Prepared and issued electronic tax invoices (coretax) in compliance with regulations.</li>
+                                        <li>Verified the accuracy of NPWP, VAT rates, and supporting documents.</li>
+                                        <li>Coordinated with internal teams to ensure smooth tax documentation.</li>
+                                    </ul>
+                                </div>
                             </div>
+                            <div class="md:w-1/2"></div>
                             <div class="timeline-dot"></div>
                         </div>
+
+                        <div class="relative md:flex items-start group">
+                            <div class="md:w-1/2 md:pr-8 md:text-right timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="hidden md:flex justify-end mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">March 2025</span>
+                                   </div>
+                                    <div class="md:hidden mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">March 2025</span>
+                                   </div>
+                                    <h3 class="text-xl font-bold text-white">Event Staff (VIV Asia 2025)</h3>
+                                    <p class="text-md text-slate-400 font-medium">PT. Permata Wacana Lestari</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 list-none">
+                                        <li>Served as administrative staff and field interpreter during the international event.</li>
+                                        <li>Facilitated communication between Indonesian delegates and international participants.</li>
+                                        <li>Assisted with event documentation and supported technical coordination on-site.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
+                        <div class="relative md:flex flex-row-reverse items-start group">
+                            <div class="md:w-1/2 md:pl-8 timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="flex flex-col md:items-end mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">Sep 2023 - Feb 2024</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white md:text-right">BI Analyst Intern</h3>
+                                    <p class="text-md text-slate-400 md:text-right font-medium">PT. Xapiens Teknologi Indonesia</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 md:text-right list-none">
+                                        <li>Assisted the ERP division in data cleaning and preparation.</li>
+                                        <li>Used statistical techniques and visualization tools to identify key trends.</li>
+                                        <li>Developed predictive models that enhanced forecast accuracy.</li>
+                                        <li>Supported ISO/IEC 27001 and ISO 9001 certified processes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot"></div>
+                        </div>
+                        
+                        <div class="relative md:flex items-start group">
+                            <div class="md:w-1/2 md:pr-8 md:text-right timeline-content">
+                                <div class="glassmorphism-card p-6 rounded-xl border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                                    <div class="hidden md:flex justify-end mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">July 2022</span>
+                                   </div>
+                                    <div class="md:hidden mb-2">
+                                        <span class="inline-block px-3 py-1 bg-cyan-900/30 text-cyan-300 text-xs font-semibold rounded-full border border-cyan-800">July 2022</span>
+                                   </div>
+                                    <h3 class="text-xl font-bold text-white">Event Staff (Agri Competition)</h3>
+                                    <p class="text-md text-slate-400 font-medium">PT. Permata Wacana Lestari</p>
+                                    <ul class="mt-4 text-sm space-y-2 text-slate-300 list-none">
+                                        <li>Worked as administrative staff and interpreter for a national competition.</li>
+                                        <li>Managed participant data, documented event activities, and operations.</li>
+                                        <li>Ensured effective communication between participants and organizers.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2"></div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Organization Experience -->
             <div>
-                 <h3 class="text-2xl font-bold text-center text-cyan-400 mb-12">Organization Experience</h3>
+                 <h3 class="text-2xl font-bold text-center text-cyan-400 mb-12 flex items-center justify-center gap-2">
+                    <i data-lucide="users" class="w-6 h-6"></i> Organization Experience
+                 </h3>
                  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="glassmorphism-card p-6 rounded-lg h-full flex flex-col transition-transform duration-300 hover:scale-105"><p class="text-sm text-cyan-400 font-semibold">Jan 2024 - Mar 2024</p><h3 class="text-xl font-bold text-white mt-1">Notetaker</h3><p class="text-md text-slate-400">ringantangan_</p><p class="mt-2 text-sm flex-grow">Supported the organization's fundraising and evaluation efforts by managing a volunteer database, preparing insightful impact reports, and organizing beneficiary feedback.</p></div>
-                    <div class="glassmorphism-card p-6 rounded-lg h-full flex flex-col transition-transform duration-300 hover:scale-105"><p class="text-sm text-cyan-400 font-semibold">Okt 2023 - Des 2023</p><h3 class="text-xl font-bold text-white mt-1">Volunteer Teacher</h3><p class="text-md text-slate-400">Teach For Indonesia</p><p class="mt-2 text-sm flex-grow">Utilized interactive learning techniques to boost English language acquisition among middle school students.</p></div>
-                    <div class="glassmorphism-card p-6 rounded-lg h-full flex flex-col transition-transform duration-300 hover:scale-105"><p class="text-sm text-cyan-400 font-semibold">Feb 2021 - Mei 2021</p><h3 class="text-xl font-bold text-white mt-1">Entrepreneurship Activist</h3><p class="text-md text-slate-400">B-Preneur</p><p class="mt-2 text-sm flex-grow">Actively contributed to a student business community, focusing on the development of business and entrepreneurial skills.</p></div>
+                    <div class="glassmorphism-card p-6 rounded-xl h-full flex flex-col transition-transform duration-300 hover:scale-105 border-t-4 border-t-transparent hover:border-t-cyan-400">
+                        <p class="text-xs text-cyan-400 font-semibold mb-2">Jan 2024 - Mar 2024</p>
+                        <h3 class="text-xl font-bold text-white mb-1">Notetaker</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-4">ringantangan_</p>
+                        <p class="text-sm text-slate-300 flex-grow leading-relaxed">Supported the organization's fundraising and evaluation efforts by managing a volunteer database, preparing insightful impact reports, and organizing beneficiary feedback.</p>
+                    </div>
+                    <div class="glassmorphism-card p-6 rounded-xl h-full flex flex-col transition-transform duration-300 hover:scale-105 border-t-4 border-t-transparent hover:border-t-cyan-400">
+                        <p class="text-xs text-cyan-400 font-semibold mb-2">Oct 2023 - Dec 2023</p>
+                        <h3 class="text-xl font-bold text-white mb-1">Volunteer Teacher</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-4">Teach For Indonesia</p>
+                        <p class="text-sm text-slate-300 flex-grow leading-relaxed">Utilized interactive learning techniques to boost English language acquisition among middle school students.</p>
+                    </div>
+                    <div class="glassmorphism-card p-6 rounded-xl h-full flex flex-col transition-transform duration-300 hover:scale-105 border-t-4 border-t-transparent hover:border-t-cyan-400">
+                        <p class="text-xs text-cyan-400 font-semibold mb-2">Feb 2021 - May 2021</p>
+                        <h3 class="text-xl font-bold text-white mb-1">Entrepreneurship Activist</h3>
+                        <p class="text-sm text-slate-400 font-medium mb-4">B-Preneur</p>
+                        <p class="text-sm text-slate-300 flex-grow leading-relaxed">Actively contributed to a student business community, focusing on the development of business and entrepreneurial skills.</p>
+                    </div>
                  </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-24 reveal">
+        <section id="skills" class="py-24 reveal bg-slate-900/50">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Technical Skills</h2>
                 <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
             </div>
-            <div class="max-w-4xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 text-center">
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-python-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">Python</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-r-original colored text-5xl"></i><p class="mt-2 font-semibold text-white">R</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-mysql-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">SQL</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-java-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">Java</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-microsoftsqlserver-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">Power BI</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-tableau-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">Tableau</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-oracle-original colored text-5xl"></i><p class="mt-2 font-semibold text-white">Oracle ERP</p></div>
-                <div class="flex flex-col items-center justify-center p-4 glassmorphism-card rounded-lg transition-transform duration-300 hover:scale-110 hover:border-cyan-400/50"><i class="devicon-msexcel-plain colored text-5xl"></i><p class="mt-2 font-semibold text-white">MS Excel</p></div>
+            <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 text-center">
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-python-plain colored text-5xl group-hover:drop-shadow-[0_0_10px_rgba(55,118,171,0.5)] transition-all"></i>
+                    <p class="mt-4 font-semibold text-white">Python</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-r-original colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">R</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-mysql-plain colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">SQL</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-java-plain colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">Java</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-microsoftsqlserver-plain colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">Power BI</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-tableau-plain colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">Tableau</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-oracle-original colored text-5xl"></i>
+                    <p class="mt-4 font-semibold text-white">Oracle ERP</p>
+                </div>
+                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
+                    <i class="devicon-postman-plain colored text-5xl"></i> 
+                    <p class="mt-4 font-semibold text-white">Postman/Excel</p>
+                </div>
             </div>
         </section>
         
-        <!-- Projects Section -->
-         <section id="projects" class="py-20">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-center text-cyan-400 mb-12">Project</h2>
+        <section id="projects" class="py-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Key Projects</h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
             </div>
-            <div class="max-w-4xl mx-auto mb-20">
+            
+            <div class="max-w-5xl mx-auto mb-16">
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card text-center">
-                        <h3 class="text-xl font-bold text-white">Data Cleaning and Analysis Project</h3>
-                        <p class="text-sm text-cyan-400 mt-1">Sep 2023 - Feb 2024</p>
-                        <p class="mt-4">• Developed a systematic approach to identify and address data quality issues.</p>
-                        <p class="mt-4">• Collaborated with cross-functional teams to understand and meet various departmental data requirements.</p>
+                    <div class="glassmorphism-card p-8 rounded-xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Data Cleaning and Analysis Project</h3>
+                        <p class="text-xs text-cyan-400 font-mono mb-4">Sep 2023 - Feb 2024</p>
+                        <p class="text-slate-300 text-sm mb-2"><i data-lucide="check-circle" class="inline w-4 h-4 text-cyan-500 mr-2"></i>Developed a systematic approach to identify and address data quality issues.</p>
+                        <p class="text-slate-300 text-sm"><i data-lucide="check-circle" class="inline w-4 h-4 text-cyan-500 mr-2"></i>Collaborated with cross-functional teams to meet various departmental data requirements.</p>
                     </div>
-                    <div class="card text-center">
-                        <h3 class="text-xl font-bold text-white">Business Intelligence Dashboard Development</h3>
-                        <p class="text-sm text-cyan-400 mt-1">Sep 2023 - Feb 2024</p>
-                        <p class="mt-4">• Integrated data from multiple sources to provide a comprehensive view of business performance.</p>
-                        <p class="mt-4">• Collaborated with business units to identify critical metrics and design intuitive visualizations.</p>                    
+                    <div class="glassmorphism-card p-8 rounded-xl relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">BI Dashboard Development</h3>
+                        <p class="text-xs text-cyan-400 font-mono mb-4">Sep 2023 - Feb 2024</p>
+                        <p class="text-slate-300 text-sm mb-2"><i data-lucide="check-circle" class="inline w-4 h-4 text-cyan-500 mr-2"></i>Integrated data from multiple sources to provide a comprehensive view of business performance.</p>
+                        <p class="text-slate-300 text-sm"><i data-lucide="check-circle" class="inline w-4 h-4 text-cyan-500 mr-2"></i>Collaborated with business units to identify critical metrics and design intuitive visualizations.</p>                    
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Proyek 1: WAREHOUSEKU.ID -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/warehouseku.png" alt="Gambar Proyek WAREHOUSEKU.ID" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">WAREHOUSEKU.ID (University Project)</h3>
-                        <p class="mt-2 text-slate-400">Prototyped a software solution to optimize warehouse workflows, featuring real-time inventory tracking and efficient logistics management to drive maximum operational efficiency.</p>
-                        <a href="https://www.figma.com/proto/nhxPyFTve7yEurwhx9fGFF/WAREHOUSEKU.ID?page-id=0%3A1&node-id=112-345&viewport=1848%2C558%2C0.37&scaling=min-zoom&starting-point-node-id=112%3A345" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Prototipe &rarr;
-                        </a>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                         <img src="Images/warehouseku.png" alt="WAREHOUSEKU.ID" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">WAREHOUSEKU.ID</h3>
+                        <p class="text-xs text-slate-500 mb-3">University Project</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Prototyped a software solution to optimize warehouse workflows, featuring real-time inventory tracking and efficient logistics management.</p>
+                        <div class="mt-auto">
+                            <a href="https://www.figma.com/proto/nhxPyFTve7yEurwhx9fGFF/WAREHOUSEKU.ID" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Prototype <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Proyek 2: Mindful -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/mindful.png" alt="Gambar Proyek Mindful" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Mindful (University Project)</h3>
-                        <p class="mt-2 text-slate-400">Mindful is an Application for Meditation . This application will be built on the Android platform and iOS. This application is design for users who are looking for peace mentally and physically.</p>
-                        <a href="https://www.figma.com/proto/4ImoxDdLY9mqutYwSoi11D/TM5---Kelompok-2?page-id=0%3A1&node-id=3-35&viewport=698%2C181%2C0.18&scaling=scale-down&starting-point-node-id=115%3A227&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Prototipe &rarr;
-                        </a>
+
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Images/mindful.png" alt="Mindful App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Mindful App</h3>
+                        <p class="text-xs text-slate-500 mb-3">University Project</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">A meditation application designed for Android and iOS, helping users find mental and physical peace.</p>
+                        <div class="mt-auto">
+                            <a href="https://www.figma.com/proto/4ImoxDdLY9mqutYwSoi11D" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Prototype <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Proyek 3: RideShare.Id -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/rideshare.png" alt="Gambar Proyek Mindful" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">RideShare.Id (Personal Project)</h3>
-                        <p class="mt-2 text-slate-400">This application will be built on the Android platform and iOS. This application is design for customer to distribute ojek services that have been registered.</p>
-                        <a href="https://www.figma.com/proto/k3WcbgHIQnkuKTAaSywCR0/Rahasia?page-id=0%3A1&node-id=1-2&viewport=611%2C299%2C0.45&scaling=scale-down&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Prototipe &rarr;
-                        </a>
+
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Images/rideshare.png" alt="RideShare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">RideShare.Id</h3>
+                        <p class="text-xs text-slate-500 mb-3">Personal Project</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Cross-platform application design for distributing ojek services, connecting drivers and customers efficiently.</p>
+                        <div class="mt-auto">
+                            <a href="https://www.figma.com/proto/k3WcbgHIQnkuKTAaSywCR0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Prototype <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Proyek 4: Redesign Website -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/tirtapasifik.png" alt="Gambar Proyek Redesign Website" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Redesign Website PT. Tirta Pasifik (Personal Project)</h3>
-                        <p class="mt-2 text-slate-400">Revitalized the corporate website to strengthen brand image and optimize the user experience (UX).</p>
-                        <a href="https://www.figma.com/design/aL2MWSMf9Mqwo5WQVJe1i1/Untitled?node-id=0-1&t=vksf7QxjDXLFYqaT-1" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Proyek &rarr;
-                        </a>
+
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Images/tirtapasifik.png" alt="Website Redesign" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Redesign PT. Tirta Pasifik</h3>
+                        <p class="text-xs text-slate-500 mb-3">Personal Project</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Revitalized the corporate website to strengthen brand image and optimize the user experience (UX).</p>
+                        <div class="mt-auto">
+                            <a href="https://www.figma.com/design/aL2MWSMf9Mqwo5WQVJe1i1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Design <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Proyek 5: Analisis Data & Dashboard Interaktif Penjualan Amazon -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/amazondash.png" alt="Gambar Proyek Analisis data" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Analisis Data & Dashboard Interaktif Penjualan Amazon (Personal Project)</h3>
-                        <p class="mt-2 text-slate-400">Designed an interactive Tableau dashboard to analyze Amazon sales data, translating complex datasets into actionable insights on sales performance, product trends, and customer sentiment.</p>
-                        <a href="https://public.tableau.com/views/AmazonSales_17587083299340/Dashboard2?:language=en-GB&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Dashboard &rarr;
-                        </a>
+
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                         <img src="Images/amazondash.png" alt="Amazon Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Amazon Sales Dashboard</h3>
+                        <p class="text-xs text-slate-500 mb-3">Tableau Project</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Interactive Tableau dashboard analyzing Amazon sales data, translating complex datasets into actionable insights.</p>
+                        <div class="mt-auto">
+                            <a href="https://public.tableau.com/views/AmazonSales_17587083299340/Dashboard2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Dashboard <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Proyek 6: Film Populer -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/dashboardfilm.png" alt="Gambar Dashboard film" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Aplikasi Web Live Data Film (Personal Project)</h3>
-                        <p class="mt-2 text-slate-400">A full-stack web application for displaying live movie data from the TMDb API. Built with a Python/Flask backend, JavaScript frontend, and hosted on PythonAnywhere.</p>
-                        <a href="http://cescrafli.pythonanywhere.com" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Website &rarr;
-                        </a>
+
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Images/hrisdashboard.png" alt="HRIS Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
                     </div>
-                </div>
-                <!-- Proyek 7: HRIS DASHBOARD -->
-                <div class="glassmorphism-card rounded-xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300">
-                    <img src="Images/hrisdashboard.png" alt="Gambar Proyek Analisis data" class="w-full h-60 object-cover group-hover:opacity-90 transition-opacity">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white">Analisis Kinerja SDM & Dashboard Interaktif HRIS (Personal Project)</h3>
-                        <p class="mt-2 text-slate-400">Engineered a comprehensive HRIS Dashboard using Streamlit and Python to streamline workforce management. The system processes raw attendance logs into actionable insights on absenteeism, overtime trends, and productivity metrics. Key features include a bilingual interface (ID/EN), automated data cleansing algorithms, and a dynamic Performance Review Module that calculates KPI scores based on attendance compliance and behavioral metrics.</p>
-                        <a href="https://dashboardhris.streamlit.app/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-cyan-400 font-semibold group-hover:text-cyan-300">
-                            Lihat Website &rarr;
-                        </a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">HRIS Dashboard & Analysis</h3>
+                        <p class="text-xs text-slate-500 mb-3">Python / Streamlit</p>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-3">Comprehensive HRIS Dashboard using Streamlit. Features bilingual interface, data cleansing, and dynamic Performance Review Module.</p>
+                        <div class="mt-auto">
+                            <a href="https://dashboardhris.streamlit.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Live App <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Education & Certification -->
         <section id="education" class="py-24 reveal">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Education & Certifications</h2>
                 <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
             </div>
-             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 text-center">
-                <div class="flex flex-col">
-                    <h3 class="text-2xl font-bold text-white">Education</h3>
-                    <div class="glassmorphism-card mt-4 p-6 rounded-lg flex-grow">
-                       <p class="font-bold text-xl text-white">Bina Nusantara University</p>
-                       <p class="text-lg text-cyan-400">Bachelor of Science</p>
-                       <p class="text-sm text-slate-400 mt-2">Sep 2020 - Aug 2025 | GPA: 3.05</p>
+             <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="flex flex-col h-full">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center justify-center md:justify-start gap-2">
+                        <i data-lucide="graduation-cap" class="text-cyan-400"></i> Education
+                    </h3>
+                    <div class="glassmorphism-card p-8 rounded-xl flex-grow hover:border-cyan-400/50 transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold text-xl text-white">Bina Nusantara University</p>
+                                <p class="text-lg text-cyan-400 mt-1">Bachelor of Information Systems</p>
+                            </div>
+                            <div class="bg-slate-800 p-2 rounded-lg">
+                                <i data-lucide="book-open" class="text-slate-400"></i>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-700/50">
+                            <p class="text-sm text-slate-400">Sep 2020 - Aug 2025</p>
+                            <p class="text-sm text-slate-300 font-semibold mt-1">GPA: 3.05</p>
+                        </div>
                     </div>
                 </div>
-                 <div class="flex flex-col">
-                    <h3 class="text-2xl font-bold text-white">Certifications</h3>
-                    <div class="glassmorphism-card mt-4 p-6 rounded-lg space-y-3 flex-grow">
-                       <p class="font-semibold">•Data Analytics - Technical Skills Series</p>
-                       <p class="font-semibold">•Data Analytics - Soft Skill Series</p>
-                       <p class="text-slate-400 italic">•AWS Certified Cloud Practitioner (In Progress)</p>
+                <div class="flex flex-col h-full">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center justify-center md:justify-start gap-2">
+                        <i data-lucide="award" class="text-cyan-400"></i> Certifications
+                    </h3>
+                    <div class="glassmorphism-card p-8 rounded-xl flex-grow space-y-4 hover:border-cyan-400/50 transition-colors">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-400 mt-1 flex-shrink-0"></i>
+                            <p class="font-medium text-slate-200">Data Analytics - Technical Skills Series</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-400 mt-1 flex-shrink-0"></i>
+                            <p class="font-medium text-slate-200">Data Analytics - Soft Skill Series</p>
+                        </div>
+                        <div class="flex items-start gap-3 opacity-75">
+                            <i data-lucide="loader" class="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0 animate-spin-slow"></i>
+                            <p class="font-medium text-slate-400 italic">AWS Certified Cloud Practitioner (In Progress)</p>
+                        </div>
                     </div>
                 </div>
              </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-24 text-center reveal">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Get in Touch</h2>
-                <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
-            </div>
-            <p class="max-w-xl mx-auto text-lg text-slate-400">
-                Open to discussing new opportunities, interesting projects, and exchanging ideas. Reach out anytime.
-            </p>
-            <div class="flex justify-center space-x-8 mt-10">
-                <a href="https://www.linkedin.com/in/mochamad-prasetyo-035124217" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300" title="LinkedIn">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-                <a href="https://wa.me/6285852317383" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300" title="WhatsApp">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.296-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                </a>
-                <a href="mailto:raflimudji@gmail.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors duration-300" title="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.8 5.85a2 2 0 002.4 0L21 8"/>
-                    <rect x="3" y="5" width="18" height="14" rx="2" ry="2"/>
-                     </svg>
-                </a>
+            <div class="glassmorphism-card max-w-4xl mx-auto p-12 rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get in Touch</h2>
+                    <p class="max-w-xl mx-auto text-lg text-slate-400 mb-10">
+                        Open to discussing new opportunities, interesting projects, and exchanging ideas. Let's create something amazing together.
+                    </p>
+                    <div class="flex justify-center gap-6">
+                        <a href="https://www.linkedin.com/in/mochamad-prasetyo-035124217" target="_blank" rel="noopener noreferrer" class="p-4 bg-slate-800 rounded-full hover:bg-[#0077b5] hover:text-white transition-all duration-300 group shadow-lg" title="LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://wa.me/6285852317383" target="_blank" rel="noopener noreferrer" class="p-4 bg-slate-800 rounded-full hover:bg-[#25D366] hover:text-white transition-all duration-300 group shadow-lg" title="WhatsApp">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </a>
+                        <a href="mailto:raflimudji@gmail.com" target="_blank" rel="noopener noreferrer" class="p-4 bg-slate-800 rounded-full hover:bg-[#EA4335] hover:text-white transition-all duration-300 group shadow-lg" title="Email">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-
     </main>
     
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 py-6">
-        <div class="container mx-auto px-6 text-center text-slate-400">
-            <p>&copy; 2025 Mochamad Rafli Mudji Prasetyo. Designed with passion.</p>
+    <footer class="border-t border-slate-800 py-8 bg-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 mb-2">&copy; 2025 Mochamad Rafli Mudji Prasetyo.</p>
+            <p class="text-slate-600 text-sm flex items-center justify-center gap-1">
+                Designed with <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-red-500"></i> and code.
+            </p>
         </div>
     </footer>
     
     <script>
+        // Initialize Icons
         lucide.createIcons();
 
         // Mobile menu toggle
@@ -448,12 +622,11 @@
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         });
 
         revealElements.forEach(el => observer.observe(el));
-
     </script>
 </body>
 </html>
-
