@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        html {
+            height: 100%;
+        }
         body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif;
             background-color: #0f172a; /* slate-900 */
             color: #cbd5e1; /* slate-300 */
@@ -100,7 +106,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300 antialiased selection:bg-cyan-500 selection:text-white flex flex-col min-h-screen">
+<body class="bg-slate-900 text-slate-300 antialiased selection:bg-cyan-500 selection:text-white">
 
     <header class="bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -150,14 +156,6 @@
             <div class="md:w-2/5 flex justify-center reveal delay-200">
                 <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-slate-800 border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 flex items-center justify-center overflow-hidden relative group">
                     <img src="Images/FotoProfile.jpg" alt="Foto Profil Mochamad Rafli" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                </div>
-            </div>
-            <div class="absolute bottom-16 left-0 w-full z-0 opacity-[0.03] pointer-events-none overflow-hidden whitespace-nowrap">
-                <div class="inline-flex animate-[scroll_40s_linear_infinite]">
-                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
-                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
-                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
-                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
                 </div>
             </div>
         </section>
@@ -748,7 +746,7 @@
 
     </main>
     
-    <footer class="border-t border-slate-800 py-8 bg-slate-900 mt-auto w-full">
+    <footer class="border-t border-slate-800 py-8 bg-slate-900">
         <div class="container mx-auto px-6 text-center">
             <p class="text-slate-500 mb-2">&copy; 2025 Mochamad Rafli Mudji Prasetyo.</p>
             <p class="text-slate-600 text-sm flex items-center justify-center gap-1">
