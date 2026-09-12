@@ -95,7 +95,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300 antialiased selection:bg-cyan-500 selection:text-white">
+<body class="bg-slate-900 text-slate-300 antialiased selection:bg-cyan-500 selection:text-white overflow-x-hidden">
 
     <header class="bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -103,7 +103,6 @@
             <div class="hidden md:flex space-x-8 items-center font-medium">
                 <a href="#about" class="hover:text-cyan-400 transition-colors duration-300">About Me</a>
                 <a href="#experience" class="hover:text-cyan-400 transition-colors duration-300">Experience</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300">Skills</a>
                 <a href="#projects" class="hover:text-cyan-400 transition-colors duration-300">Project</a>
                 <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-2 rounded-md transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 transform hover:-translate-y-0.5">Contact Me</a>
             </div>
@@ -115,16 +114,15 @@
             <div class="flex flex-col py-2">
                 <a href="#about" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">About Me</a>
                 <a href="#experience" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Experience</a>
-                <a href="#skills" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Skills</a>
                 <a href="#projects" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Project</a>
                 <a href="#contact" class="block py-3 px-6 hover:bg-slate-800 hover:text-cyan-400 transition-colors">Contact Me</a>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 overflow-hidden">
+    <main class="container mx-auto px-6 py-12">
 
-        <section id="hero" class="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-center gap-12 pt-10 md:pt-0">
+        <section id="hero" class="relative overflow-hidden min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-center gap-12 pt-10 md:pt-0">
             <div class="md:w-3/5 text-center md:text-left reveal">
                 <p class="text-lg text-cyan-400 font-medium mb-2">Hello, I'm</p>
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">Mochamad Rafli Mudji Prasetyo</h1>
@@ -149,7 +147,201 @@
                     <img src="Images/FotoProfile.jpg" alt="Foto Profil Mochamad Rafli" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 </div>
             </div>
+            <div class="absolute bottom-16 left-0 w-full z-0 opacity-[0.03] pointer-events-none overflow-hidden whitespace-nowrap">
+                <div class="inline-flex animate-[scroll_40s_linear_infinite]">
+                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
+                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
+                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
+                    <span class="text-[100px] md:text-[150px] font-bold tracking-tighter text-white mx-8">Mochamad Rafli Mudji Prasetyo. Data Engineer.</span>
+                </div>
+            </div>
         </section>
+
+        <style>
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            /* Menghapus padding/margin dari main container untuk area marquee agar full width */
+            .full-width-marquee {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
+        </style>
+
+        <!-- Themed Marquee Section -->
+        <div class="full-width-marquee bg-slate-800 py-6 overflow-hidden whitespace-nowrap shadow-md mb-12 border-y border-slate-700">
+            <div class="inline-flex animate-[scroll_25s_linear_infinite]">
+                <!-- Duplicate Set 1 -->
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-python-plain text-cyan-400"></i> Python</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-r-original text-cyan-400"></i> R</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-mysql-plain text-cyan-400"></i> SQL</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-java-plain text-cyan-400"></i> Java</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="12" width="5" height="10" rx="1" fill="currentColor"/>
+                        <rect x="9.5" y="6" width="5" height="16" rx="1" fill="currentColor"/>
+                        <rect x="16" y="0" width="5" height="22" rx="1" fill="currentColor"/>
+                    </svg> Power BI
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.8 15.2V22.8H15.2V25.2H22.8V32.8H25.2V25.2H32.8V22.8H25.2V15.2H22.8Z"/>
+                        <path d="M11 20V23.5H7.5V25.5H11V29H13V25.5H16.5V23.5H13V20H11Z"/>
+                        <path d="M35 12V17H30V19H35V24H37V19H42V17H37V12H35Z"/>
+                        <path d="M37 28V32H33V34H37V38H39V34H43V32H39V28H37Z"/>
+                        <path d="M21 4.5V8.5H17V10.5H21V14.5H23V10.5H27V8.5H23V4.5H21Z"/>
+                        <path d="M12.5 31V34.5H9V36.5H12.5V40H14.5V36.5H18V34.5H14.5V31H12.5Z"/>
+                        <path d="M23 35V38H20V39.5H23V42.5H24.5V39.5H27.5V38H24.5V35H23Z"/>
+                        <path d="M7 11V14H4V15.5H7V18.5H8.5V15.5H11.5V14H8.5V11H7Z"/>
+                        <path d="M31 3.5V6H28.5V7.5H31V10H32.5V7.5H35V6H32.5V3.5H31Z"/>
+                    </svg> Tableau
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-oracle-original text-cyan-400"></i> Oracle ERP</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.83 4h18.34C22 4 22 4.75 22 4v16c0 .75 0 .75-.83.75H2.83C2 20.75 2 20.75 2 20V4c0-.75 0-.75.83-.75zm7.35 13.5l2.67-4.4 2.87 4.4h2.51l-4.17-6.08 3.9-5.74h-2.52l-2.57 4.1-2.65-4.1H7.83l3.85 5.8-4.11 6.02h2.61z" />
+                    </svg> Excel
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.812 0c-.425.013-.845.215-1.196.605a3.593 3.593 0 00-.493.722c-.355.667-.425 1.415-.556 2.143a551.9 551.9 0 00-.726 4.087c-.027.16-.096.227-.244.273C5.83 8.386 4.06 8.94 2.3 9.514c-.387.125-.773.289-1.114.506-1.042.665-1.196 1.753-.415 2.71.346.422.79.715 1.284.936 1.1.49 2.202.976 3.3 1.47.019.01.036.013.053.019h-.004l1.306.535c0 .023.002.045 0 .073-.2 2.03-.39 4.063-.58 6.095-.04.419-.012.831.134 1.23.317.87 1.065 1.148 1.881.701.372-.204.666-.497.937-.818 1.372-1.623 2.746-3.244 4.113-4.872.111-.133.205-.15.363-.098.349.117.697.231 1.045.347h.001c.02.012.045.02.073.03l.142.042c1.248.416 2.68.775 3.929 1.19.4.132.622.164 1.045.098.311-.048.592-.062.828-.236.602-.33.995-.957.988-1.682-.005-.427-.154-.813-.35-1.186-.82-1.556-1.637-3.113-2.461-4.666-.078-.148-.076-.243.037-.375 1.381-1.615 2.756-3.236 4.133-4.855.272-.32.513-.658.653-1.058.308-.878-.09-1.57-1-1.741a2.783 2.783 0 00-1.235.069c-1.974.521-3.947 1.041-5.918 1.57-.175.047-.26.015-.355-.144a353.08 353.08 0 00-2.421-4.018 4.61 4.61 0 00-.652-.849c-.371-.37-.802-.549-1.227-.536zm.172 3.703a.592.592 0 01.189.211c.87 1.446 1.742 2.89 2.609 4.338.07.118.135.16.277.121 1.525-.41 3.052-.813 4.579-1.217.367-.098.735-.193 1.103-.289a.399.399 0 01-.1.2c-1.259 1.48-2.516 2.962-3.779 4.438-.11.13-.12.22-.04.37.937 1.803 1.768 3.309 2.498 4.76l-3.696-1.019c-.538-.18-1.077-.358-1.615-.539-.163-.055-.25-.03-.36.1-1.248 1.488-2.504 2.97-3.759 4.454a.398.398 0 01-.18.132c.035-.378.068-.757.104-1.136.149-1.572.297-3.144.451-4.716-.03-.318.117-.405-.322-.545-1.493-.593-3.346-1.321-4.816-1.905a.595.595 0 01.24-.134c1.797-.57 3.595-1.14 5.394-1.705.127-.04.199-.092.211-.233.013-.148.05-.294.076-.441.241-1.363.483-2.726.726-4.088.068-.386.14-.771.21-1.157z"/></svg> PySpark
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z"/></svg> Databricks
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg> Postman
+                </div>
+
+                <!-- Duplicate Set 2 -->
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-python-plain text-cyan-400"></i> Python</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-r-original text-cyan-400"></i> R</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-mysql-plain text-cyan-400"></i> SQL</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-java-plain text-cyan-400"></i> Java</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="12" width="5" height="10" rx="1" fill="currentColor"/>
+                        <rect x="9.5" y="6" width="5" height="16" rx="1" fill="currentColor"/>
+                        <rect x="16" y="0" width="5" height="22" rx="1" fill="currentColor"/>
+                    </svg> Power BI
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.8 15.2V22.8H15.2V25.2H22.8V32.8H25.2V25.2H32.8V22.8H25.2V15.2H22.8Z"/>
+                        <path d="M11 20V23.5H7.5V25.5H11V29H13V25.5H16.5V23.5H13V20H11Z"/>
+                        <path d="M35 12V17H30V19H35V24H37V19H42V17H37V12H35Z"/>
+                        <path d="M37 28V32H33V34H37V38H39V34H43V32H39V28H37Z"/>
+                        <path d="M21 4.5V8.5H17V10.5H21V14.5H23V10.5H27V8.5H23V4.5H21Z"/>
+                        <path d="M12.5 31V34.5H9V36.5H12.5V40H14.5V36.5H18V34.5H14.5V31H12.5Z"/>
+                        <path d="M23 35V38H20V39.5H23V42.5H24.5V39.5H27.5V38H24.5V35H23Z"/>
+                        <path d="M7 11V14H4V15.5H7V18.5H8.5V15.5H11.5V14H8.5V11H7Z"/>
+                        <path d="M31 3.5V6H28.5V7.5H31V10H32.5V7.5H35V6H32.5V3.5H31Z"/>
+                    </svg> Tableau
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-oracle-original text-cyan-400"></i> Oracle ERP</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.83 4h18.34C22 4 22 4.75 22 4v16c0 .75 0 .75-.83.75H2.83C2 20.75 2 20.75 2 20V4c0-.75 0-.75.83-.75zm7.35 13.5l2.67-4.4 2.87 4.4h2.51l-4.17-6.08 3.9-5.74h-2.52l-2.57 4.1-2.65-4.1H7.83l3.85 5.8-4.11 6.02h2.61z" />
+                    </svg> Excel
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.812 0c-.425.013-.845.215-1.196.605a3.593 3.593 0 00-.493.722c-.355.667-.425 1.415-.556 2.143a551.9 551.9 0 00-.726 4.087c-.027.16-.096.227-.244.273C5.83 8.386 4.06 8.94 2.3 9.514c-.387.125-.773.289-1.114.506-1.042.665-1.196 1.753-.415 2.71.346.422.79.715 1.284.936 1.1.49 2.202.976 3.3 1.47.019.01.036.013.053.019h-.004l1.306.535c0 .023.002.045 0 .073-.2 2.03-.39 4.063-.58 6.095-.04.419-.012.831.134 1.23.317.87 1.065 1.148 1.881.701.372-.204.666-.497.937-.818 1.372-1.623 2.746-3.244 4.113-4.872.111-.133.205-.15.363-.098.349.117.697.231 1.045.347h.001c.02.012.045.02.073.03l.142.042c1.248.416 2.68.775 3.929 1.19.4.132.622.164 1.045.098.311-.048.592-.062.828-.236.602-.33.995-.957.988-1.682-.005-.427-.154-.813-.35-1.186-.82-1.556-1.637-3.113-2.461-4.666-.078-.148-.076-.243.037-.375 1.381-1.615 2.756-3.236 4.133-4.855.272-.32.513-.658.653-1.058.308-.878-.09-1.57-1-1.741a2.783 2.783 0 00-1.235.069c-1.974.521-3.947 1.041-5.918 1.57-.175.047-.26.015-.355-.144a353.08 353.08 0 00-2.421-4.018 4.61 4.61 0 00-.652-.849c-.371-.37-.802-.549-1.227-.536zm.172 3.703a.592.592 0 01.189.211c.87 1.446 1.742 2.89 2.609 4.338.07.118.135.16.277.121 1.525-.41 3.052-.813 4.579-1.217.367-.098.735-.193 1.103-.289a.399.399 0 01-.1.2c-1.259 1.48-2.516 2.962-3.779 4.438-.11.13-.12.22-.04.37.937 1.803 1.768 3.309 2.498 4.76l-3.696-1.019c-.538-.18-1.077-.358-1.615-.539-.163-.055-.25-.03-.36.1-1.248 1.488-2.504 2.97-3.759 4.454a.398.398 0 01-.18.132c.035-.378.068-.757.104-1.136.149-1.572.297-3.144.451-4.716-.03-.318.117-.405-.322-.545-1.493-.593-3.346-1.321-4.816-1.905a.595.595 0 01.24-.134c1.797-.57 3.595-1.14 5.394-1.705.127-.04.199-.092.211-.233.013-.148.05-.294.076-.441.241-1.363.483-2.726.726-4.088.068-.386.14-.771.21-1.157z"/></svg> PySpark
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z"/></svg> Databricks
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg> Postman
+                </div>
+
+                <!-- Duplicate Set 3 -->
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-python-plain text-cyan-400"></i> Python</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-r-original text-cyan-400"></i> R</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-mysql-plain text-cyan-400"></i> SQL</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-java-plain text-cyan-400"></i> Java</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="12" width="5" height="10" rx="1" fill="currentColor"/>
+                        <rect x="9.5" y="6" width="5" height="16" rx="1" fill="currentColor"/>
+                        <rect x="16" y="0" width="5" height="22" rx="1" fill="currentColor"/>
+                    </svg> Power BI
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.8 15.2V22.8H15.2V25.2H22.8V32.8H25.2V25.2H32.8V22.8H25.2V15.2H22.8Z"/>
+                        <path d="M11 20V23.5H7.5V25.5H11V29H13V25.5H16.5V23.5H13V20H11Z"/>
+                        <path d="M35 12V17H30V19H35V24H37V19H42V17H37V12H35Z"/>
+                        <path d="M37 28V32H33V34H37V38H39V34H43V32H39V28H37Z"/>
+                        <path d="M21 4.5V8.5H17V10.5H21V14.5H23V10.5H27V8.5H23V4.5H21Z"/>
+                        <path d="M12.5 31V34.5H9V36.5H12.5V40H14.5V36.5H18V34.5H14.5V31H12.5Z"/>
+                        <path d="M23 35V38H20V39.5H23V42.5H24.5V39.5H27.5V38H24.5V35H23Z"/>
+                        <path d="M7 11V14H4V15.5H7V18.5H8.5V15.5H11.5V14H8.5V11H7Z"/>
+                        <path d="M31 3.5V6H28.5V7.5H31V10H32.5V7.5H35V6H32.5V3.5H31Z"/>
+                    </svg> Tableau
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-oracle-original text-cyan-400"></i> Oracle ERP</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.83 4h18.34C22 4 22 4.75 22 4v16c0 .75 0 .75-.83.75H2.83C2 20.75 2 20.75 2 20V4c0-.75 0-.75.83-.75zm7.35 13.5l2.67-4.4 2.87 4.4h2.51l-4.17-6.08 3.9-5.74h-2.52l-2.57 4.1-2.65-4.1H7.83l3.85 5.8-4.11 6.02h2.61z" />
+                    </svg> Excel
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.812 0c-.425.013-.845.215-1.196.605a3.593 3.593 0 00-.493.722c-.355.667-.425 1.415-.556 2.143a551.9 551.9 0 00-.726 4.087c-.027.16-.096.227-.244.273C5.83 8.386 4.06 8.94 2.3 9.514c-.387.125-.773.289-1.114.506-1.042.665-1.196 1.753-.415 2.71.346.422.79.715 1.284.936 1.1.49 2.202.976 3.3 1.47.019.01.036.013.053.019h-.004l1.306.535c0 .023.002.045 0 .073-.2 2.03-.39 4.063-.58 6.095-.04.419-.012.831.134 1.23.317.87 1.065 1.148 1.881.701.372-.204.666-.497.937-.818 1.372-1.623 2.746-3.244 4.113-4.872.111-.133.205-.15.363-.098.349.117.697.231 1.045.347h.001c.02.012.045.02.073.03l.142.042c1.248.416 2.68.775 3.929 1.19.4.132.622.164 1.045.098.311-.048.592-.062.828-.236.602-.33.995-.957.988-1.682-.005-.427-.154-.813-.35-1.186-.82-1.556-1.637-3.113-2.461-4.666-.078-.148-.076-.243.037-.375 1.381-1.615 2.756-3.236 4.133-4.855.272-.32.513-.658.653-1.058.308-.878-.09-1.57-1-1.741a2.783 2.783 0 00-1.235.069c-1.974.521-3.947 1.041-5.918 1.57-.175.047-.26.015-.355-.144a353.08 353.08 0 00-2.421-4.018 4.61 4.61 0 00-.652-.849c-.371-.37-.802-.549-1.227-.536zm.172 3.703a.592.592 0 01.189.211c.87 1.446 1.742 2.89 2.609 4.338.07.118.135.16.277.121 1.525-.41 3.052-.813 4.579-1.217.367-.098.735-.193 1.103-.289a.399.399 0 01-.1.2c-1.259 1.48-2.516 2.962-3.779 4.438-.11.13-.12.22-.04.37.937 1.803 1.768 3.309 2.498 4.76l-3.696-1.019c-.538-.18-1.077-.358-1.615-.539-.163-.055-.25-.03-.36.1-1.248 1.488-2.504 2.97-3.759 4.454a.398.398 0 01-.18.132c.035-.378.068-.757.104-1.136.149-1.572.297-3.144.451-4.716-.03-.318.117-.405-.322-.545-1.493-.593-3.346-1.321-4.816-1.905a.595.595 0 01.24-.134c1.797-.57 3.595-1.14 5.394-1.705.127-.04.199-.092.211-.233.013-.148.05-.294.076-.441.241-1.363.483-2.726.726-4.088.068-.386.14-.771.21-1.157z"/></svg> PySpark
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z"/></svg> Databricks
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg> Postman
+                </div>
+                
+                <!-- Duplicate Set 4 -->
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-python-plain text-cyan-400"></i> Python</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-r-original text-cyan-400"></i> R</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-mysql-plain text-cyan-400"></i> SQL</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-java-plain text-cyan-400"></i> Java</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="12" width="5" height="10" rx="1" fill="currentColor"/>
+                        <rect x="9.5" y="6" width="5" height="16" rx="1" fill="currentColor"/>
+                        <rect x="16" y="0" width="5" height="22" rx="1" fill="currentColor"/>
+                    </svg> Power BI
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.8 15.2V22.8H15.2V25.2H22.8V32.8H25.2V25.2H32.8V22.8H25.2V15.2H22.8Z"/>
+                        <path d="M11 20V23.5H7.5V25.5H11V29H13V25.5H16.5V23.5H13V20H11Z"/>
+                        <path d="M35 12V17H30V19H35V24H37V19H42V17H37V12H35Z"/>
+                        <path d="M37 28V32H33V34H37V38H39V34H43V32H39V28H37Z"/>
+                        <path d="M21 4.5V8.5H17V10.5H21V14.5H23V10.5H27V8.5H23V4.5H21Z"/>
+                        <path d="M12.5 31V34.5H9V36.5H12.5V40H14.5V36.5H18V34.5H14.5V31H12.5Z"/>
+                        <path d="M23 35V38H20V39.5H23V42.5H24.5V39.5H27.5V38H24.5V35H23Z"/>
+                        <path d="M7 11V14H4V15.5H7V18.5H8.5V15.5H11.5V14H8.5V11H7Z"/>
+                        <path d="M31 3.5V6H28.5V7.5H31V10H32.5V7.5H35V6H32.5V3.5H31Z"/>
+                    </svg> Tableau
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl"><i class="devicon-oracle-original text-cyan-400"></i> Oracle ERP</div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.83 4h18.34C22 4 22 4.75 22 4v16c0 .75 0 .75-.83.75H2.83C2 20.75 2 20.75 2 20V4c0-.75 0-.75.83-.75zm7.35 13.5l2.67-4.4 2.87 4.4h2.51l-4.17-6.08 3.9-5.74h-2.52l-2.57 4.1-2.65-4.1H7.83l3.85 5.8-4.11 6.02h2.61z" />
+                    </svg> Excel
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.812 0c-.425.013-.845.215-1.196.605a3.593 3.593 0 00-.493.722c-.355.667-.425 1.415-.556 2.143a551.9 551.9 0 00-.726 4.087c-.027.16-.096.227-.244.273C5.83 8.386 4.06 8.94 2.3 9.514c-.387.125-.773.289-1.114.506-1.042.665-1.196 1.753-.415 2.71.346.422.79.715 1.284.936 1.1.49 2.202.976 3.3 1.47.019.01.036.013.053.019h-.004l1.306.535c0 .023.002.045 0 .073-.2 2.03-.39 4.063-.58 6.095-.04.419-.012.831.134 1.23.317.87 1.065 1.148 1.881.701.372-.204.666-.497.937-.818 1.372-1.623 2.746-3.244 4.113-4.872.111-.133.205-.15.363-.098.349.117.697.231 1.045.347h.001c.02.012.045.02.073.03l.142.042c1.248.416 2.68.775 3.929 1.19.4.132.622.164 1.045.098.311-.048.592-.062.828-.236.602-.33.995-.957.988-1.682-.005-.427-.154-.813-.35-1.186-.82-1.556-1.637-3.113-2.461-4.666-.078-.148-.076-.243.037-.375 1.381-1.615 2.756-3.236 4.133-4.855.272-.32.513-.658.653-1.058.308-.878-.09-1.57-1-1.741a2.783 2.783 0 00-1.235.069c-1.974.521-3.947 1.041-5.918 1.57-.175.047-.26.015-.355-.144a353.08 353.08 0 00-2.421-4.018 4.61 4.61 0 00-.652-.849c-.371-.37-.802-.549-1.227-.536zm.172 3.703a.592.592 0 01.189.211c.87 1.446 1.742 2.89 2.609 4.338.07.118.135.16.277.121 1.525-.41 3.052-.813 4.579-1.217.367-.098.735-.193 1.103-.289a.399.399 0 01-.1.2c-1.259 1.48-2.516 2.962-3.779 4.438-.11.13-.12.22-.04.37.937 1.803 1.768 3.309 2.498 4.76l-3.696-1.019c-.538-.18-1.077-.358-1.615-.539-.163-.055-.25-.03-.36.1-1.248 1.488-2.504 2.97-3.759 4.454a.398.398 0 01-.18.132c.035-.378.068-.757.104-1.136.149-1.572.297-3.144.451-4.716-.03-.318.117-.405-.322-.545-1.493-.593-3.346-1.321-4.816-1.905a.595.595 0 01.24-.134c1.797-.57 3.595-1.14 5.394-1.705.127-.04.199-.092.211-.233.013-.148.05-.294.076-.441.241-1.363.483-2.726.726-4.088.068-.386.14-.771.21-1.157z"/></svg> PySpark
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.95 14.184L12 20.403l9.919-5.55v2.21L12 22.662l-10.484-5.96-.565.308v.77L12 24l11.05-6.218v-4.317l-.515-.309L12 19.118l-9.867-5.653v-2.21L12 16.805l11.05-6.218V6.32l-.515-.308L12 11.974 2.647 6.681 12 1.388l7.76 4.368.668-.411v-.566L12 0 .95 6.27v.72L12 13.207l9.919-5.55v2.26L12 15.52 1.516 9.56l-.565.308Z"/></svg> Databricks
+                </div>
+                <div class="mx-12 flex items-center gap-3 text-cyan-400 font-bold text-xl">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg> Postman
+                </div>
+            </div>
+        </div>
+
 
         <section id="about" class="py-24 reveal">
             <div class="text-center mb-16">
@@ -347,65 +539,6 @@
                         <p class="text-sm text-slate-300 flex-grow leading-relaxed">Actively contributed to a student business community, focusing on the development of business and entrepreneurial skills.</p>
                     </div>
                  </div>
-            </div>
-        </section>
-
-        <section id="skills" class="py-24 reveal bg-slate-900/50">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Technical Skills</h2>
-                <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded"></div>
-            </div>
-            <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 text-center">
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <i class="devicon-python-plain colored text-5xl group-hover:drop-shadow-[0_0_10px_rgba(55,118,171,0.5)] transition-all"></i>
-                    <p class="mt-4 font-semibold text-white">Python</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <i class="devicon-r-original colored text-5xl"></i>
-                    <p class="mt-4 font-semibold text-white">R</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <i class="devicon-mysql-plain colored text-5xl"></i>
-                    <p class="mt-4 font-semibold text-white">SQL</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <i class="devicon-java-plain colored text-5xl"></i>
-                    <p class="mt-4 font-semibold text-white">Java</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <svg class="w-12 h-12 mb-2 transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(242,200,17,0.5)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="12" width="5" height="10" rx="1" fill="#E6AD10"/>
-                        <rect x="9.5" y="6" width="5" height="16" rx="1" fill="#F2C811"/>
-                        <rect x="16" y="0" width="5" height="22" rx="1" fill="#F9E063"/>
-                    </svg>
-                    <p class="mt-4 font-semibold text-white">Power BI</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <svg class="w-12 h-12 mb-2 transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(233,123,48,0.5)]" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.8 15.2V22.8H15.2V25.2H22.8V32.8H25.2V25.2H32.8V22.8H25.2V15.2H22.8Z" fill="#E97B30"/>
-                        <path d="M11 20V23.5H7.5V25.5H11V29H13V25.5H16.5V23.5H13V20H11Z" fill="#4281A4"/>
-                        <path d="M35 12V17H30V19H35V24H37V19H42V17H37V12H35Z" fill="#E3B34C"/>
-                        <path d="M37 28V32H33V34H37V38H39V34H43V32H39V28H37Z" fill="#F495A2"/>
-                        <path d="M21 4.5V8.5H17V10.5H21V14.5H23V10.5H27V8.5H23V4.5H21Z" fill="#6EA998"/>
-                        <path d="M12.5 31V34.5H9V36.5H12.5V40H14.5V36.5H18V34.5H14.5V31H12.5Z" fill="#D36B5E"/>
-                        <path d="M23 35V38H20V39.5H23V42.5H24.5V39.5H27.5V38H24.5V35H23Z" fill="#A87F9B"/>
-                        <path d="M7 11V14H4V15.5H7V18.5H8.5V15.5H11.5V14H8.5V11H7Z" fill="#E89F4F"/>
-                        <path d="M31 3.5V6H28.5V7.5H31V10H32.5V7.5H35V6H32.5V3.5H31Z" fill="#71A0CD"/>
-                    </svg>
-                    <p class="mt-4 font-semibold text-white">Tableau</p>
-                </div>
-                <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                    <i class="devicon-oracle-original colored text-5xl"></i>
-                    <p class="mt-4 font-semibold text-white">Oracle ERP</p>
-                </div>
-                    <div class="group flex flex-col items-center justify-center p-6 glassmorphism-card rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-green-500 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M2.83 4h18.34C22 4 22 4.75 22 4v16c0 .75 0 .75-.83.75H2.83C2 20.75 2 20.75 2 20V4c0-.75 0-.75.83-.75zm7.35 13.5l2.67-4.4 2.87 4.4h2.51l-4.17-6.08 3.9-5.74h-2.52l-2.57 4.1-2.65-4.1H7.83l3.85 5.8-4.11 6.02h2.61z" />
-    </svg> 
-    
-    <p class="mt-4 font-semibold text-white">Excel</p>
-
-                </div>
             </div>
         </section>
         
