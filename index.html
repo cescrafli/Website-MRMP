@@ -557,8 +557,30 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                 
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Images/ani-gallery.png" alt="Jocelyn & Rafli Gallery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Jocelyn & Rafli Gallery</h3>
+                        <p class="text-xs text-slate-500 mb-3">3D Virtual Gallery</p>
+                        <div>
+                            <p class="text-slate-400 text-sm mb-1 line-clamp-3 transition-all duration-300" id="desc-ani-gallery">
+                                A 3D interactive virtual reality gallery web app showcasing personal memories in an immersive spatial environment. Features include responsive device controls (desktop/mobile), a dynamic auto-grid engine for effortless photo arrangement, and spatial audio. A custom admin dashboard secured via GitHub PAT enables bulk uploads, automatically committing Base64 images to the repository via API to trigger Netlify CI/CD redeployment.
+                            </p>
+                            <button onclick="const p = document.getElementById('desc-ani-gallery'); p.classList.toggle('line-clamp-3'); this.innerText = p.classList.contains('line-clamp-3') ? 'See more' : 'See less';" class="text-cyan-500 hover:text-cyan-400 text-xs font-semibold focus:outline-none mb-4 transition-colors">See more</button>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="../ani-gallery/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                View Gallery <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
                     <div class="relative overflow-hidden h-48">
                          <img src="Images/griyadjayasentosa.jpg" alt="Griya Djaya Sentosa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -649,8 +671,7 @@
                     </div>
                 </div>
 
-
-                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col hidden extra-project">
                     <div class="relative overflow-hidden h-48">
                         <img src="Images/hrisdashboard.png" alt="HRIS Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
@@ -667,6 +688,12 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="document.querySelectorAll('.extra-project').forEach(el => el.classList.toggle('hidden')); this.innerText = this.innerText === 'View More' ? 'View Less' : 'View More';" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold py-3 px-8 rounded-full border border-cyan-400/30 transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                    View More
+                </button>
             </div>
         </section>
 
