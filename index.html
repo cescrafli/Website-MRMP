@@ -561,6 +561,28 @@
                 
                 <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
                     <div class="relative overflow-hidden h-48">
+                        <img src="Images/celyn-ai.png" alt="Celyn AI Companion" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Celyn AI Companion</h3>
+                        <p class="text-xs text-slate-500 mb-3">Real-Time AI Companion</p>
+                        <div>
+                            <p class="text-slate-400 text-sm mb-1 line-clamp-3 transition-all duration-300" id="desc-celyn-ai">
+                                Built a real time full duplex AI companion on Gemini Live API with sub second speech to speech via bidirectional WebSockets and 24kHz audio streaming. Engineered a low latency browser audio engine (Web Audio API, AudioWorklets) with custom VAD, echo suppression, and audio reactive lip sync for 2D/3D avatars. Implemented token efficient visual delta detection and state management in a TypeScript monorepo with a 64-test CI pipeline.
+                            </p>
+                            <button onclick="const p = document.getElementById('desc-celyn-ai'); p.classList.toggle('line-clamp-3'); this.innerText = p.classList.contains('line-clamp-3') ? 'See more' : 'See less';" class="text-cyan-500 hover:text-cyan-400 text-xs font-semibold focus:outline-none mb-4 transition-colors">See more</button>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="https://celynpharmacist.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 text-sm font-semibold hover:text-cyan-300 group/link">
+                                Visit Website <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden h-48">
                         <img src="Images/nfc-activator.png" alt="NFC Smart Card Activator" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
                     </div>
@@ -664,7 +686,7 @@
                     </div>
                 </div>
 
-                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+                <div class="glassmorphism-card rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 flex flex-col hidden extra-project">
                     <div class="relative overflow-hidden h-48">
                         <img src="Images/mindful.png" alt="Mindful App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
