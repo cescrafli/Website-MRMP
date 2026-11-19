@@ -613,7 +613,7 @@
                         <p class="text-xs text-slate-500 mb-3">Python Automated Tool</p>
                         <div>
                             <p class="text-slate-400 text-sm mb-1 line-clamp-3 transition-all duration-300" id="desc-jobchecker">
-                                A Python tool that keeps track of job application emails so you don't have to sort through your inbox by hand. It reads your inbox, picks out job related emails by keyword, flags interview invitations, and logs the status of each application. A batch script lets you run it on your own computer.
+                                A Python tool that tracks job application emails from Gmail so you don't have to sort your inbox by hand. Using the Gmail API and Google Gemini, it identifies statuses and selection stages (psychotest, technical test, interviews, offering) and logs updates into Excel with clickable email links, with a batch script for local scheduling.
                             </p>
                             <button onclick="const p = document.getElementById('desc-jobchecker'); p.classList.toggle('line-clamp-3'); this.innerText = p.classList.contains('line-clamp-3') ? 'See more' : 'See less';" class="text-cyan-500 hover:text-cyan-400 text-xs font-semibold focus:outline-none mb-4 transition-colors">See more</button>
                         </div>
